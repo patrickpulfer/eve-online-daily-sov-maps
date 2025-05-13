@@ -198,7 +198,7 @@ class AppWindow(Gtk.ApplicationWindow):
 class App(Adw.Application):
 
     def __init__(self):
-        super().__init__(application_id='cloud.pulfer', flags=Gio.ApplicationFlags.FLAGS_NONE)
+        super().__init__(application_id='cloud.pulfer.EveInfluenceMap', flags=Gio.ApplicationFlags.FLAGS_NONE)
         self.create_action('quit', self.exit_app, ['<primary>q'])
         self.create_action('about', self.on_about_action)
 
