@@ -23,12 +23,12 @@
   <developer_name>Patrick Pulfer</developer_name>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/ppulfer/eve-influence-map/main/screenshots/main.png</image>
+      <image>https://raw.githubusercontent.com/patrickpulfer/eve-online-daily-sov-maps/refs/heads/main/screenshots/1.png</image>
       <caption>Main window showing sovereignty map</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/ppulfer/eve-influence-map/main/screenshots/coalition.png</image>
-      <caption>Coalition map view</caption>
+      <image>https://raw.githubusercontent.com/patrickpulfer/eve-online-daily-sov-maps/refs/heads/main/screenshots/2.png</image>
+      <caption>Map Selection view</caption>
     </screenshot>
   </screenshots>
 </component>
