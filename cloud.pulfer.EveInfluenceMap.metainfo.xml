@@ -7,7 +7,7 @@
   <summary>Eve Online sovereignty map viewer</summary>
   <description>
     <p>
-      A simple viewer for Eve Online's daily sovereignty maps. View both influence and coalition maps with zoom functionality.
+      Eve Online's daily sovereignty maps viewer, focusing on both the Alliance and Coalition influences.
     </p>
   </description>
   <launchable type="desktop-id">cloud.pulfer.EveInfluenceMap.desktop</launchable>
