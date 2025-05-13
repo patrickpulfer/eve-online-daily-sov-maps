@@ -21,4 +21,14 @@
   </releases>
   <content_rating type="oars-1.1" />
   <developer_name>Patrick Pulfer</developer_name>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/ppulfer/eve-influence-map/main/screenshots/main.png</image>
+      <caption>Main window showing sovereignty map</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/ppulfer/eve-influence-map/main/screenshots/coalition.png</image>
+      <caption>Coalition map view</caption>
+    </screenshot>
+  </screenshots>
 </component>
