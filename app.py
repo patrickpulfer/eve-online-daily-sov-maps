@@ -159,7 +159,6 @@ class AppWindow(Gtk.ApplicationWindow):
         header_bar.pack_start(zoom_in_button)
 
         # Create and add image tab
-        #influence_tab = ImageTab("./influence.png")
         cache_dir = os.path.join(GLib.get_user_cache_dir(), 'cloud.pulfer.EveInfluenceMap')
         influence_tab = ImageTab(os.path.join(cache_dir, "influence.png"))
         tab_page = self.tabView.append(influence_tab.scroll)
@@ -174,7 +173,6 @@ class AppWindow(Gtk.ApplicationWindow):
         self.current_image_tab = influence_tab
 
         # Create the tabs
-        #coalition = ImageTab("./coalitioninfluence.png")
         coalition = ImageTab(os.path.join(cache_dir, "coalitioninfluence.png"))
         tab_page = self.tabView.append(coalition.scroll)
         tab_page.set_title("Coalition Influence")
@@ -250,7 +248,6 @@ def main(version):
     download_image('https://www.verite.space/maps/influence/influence.png', influence_map)
     download_image('https://www.verite.space/maps/coalition/coalitioninfluence.png', coalition_map)
     app = App()
-    #app.run(sys.argv)
     return app.run(sys.argv)
 
 
