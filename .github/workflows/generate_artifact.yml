@@ -9,7 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Set Gnome 48 environment
+        uses: actions/checkout@v3
+      - uses: ghcr.io/flathub-infra/flatpak-github-actions:gnome-48
 
       - name: Set up Flatpak
         uses: flatpak/flatpak-github-actions/setup-flatpak@v6
