@@ -15,6 +15,11 @@ jobs:
     - uses: actions/checkout@v4
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
-        bundle: palette.flatpak
+        bundle: eve-influence-map.flatpak
         manifest-path: cloud.pulfer.EveInfluenceMap.yml
         cache-key: flatpak-builder-${{ github.sha }}
+    - name: Upload Flatpak artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: eve-influence-map.flatpak
+        path: eve-influence-map.flatpak
