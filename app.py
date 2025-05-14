@@ -3,6 +3,7 @@
 import gi, sys
 import urllib.request
 import os
+import threading
 
 gi.require_version(namespace='Gtk', version='4.0')
 gi.require_version(namespace='Adw', version='1')
@@ -108,10 +109,18 @@ class ImageTab:
 class AppWindow(Gtk.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
         self.set_title(title='Eve Daily Sov Maps')
-        self.set_default_size(width=int(928), height=int(1024))
+        self.set_default_size(width=928, height=1024)
 
+        # Create status page for loading
+        self.status_page = Adw.StatusPage.new()
+        self.status_page.set_title('Loading...')
+        self.status_page.set_icon_name('mail-inbox-symbolic')
+        self.status_page.set_description('Downloading latest maps...')
+
+        self.set_child(self.status_page)
+
+    def show_main_ui(self):
         # Create a TabView
         self.tabView = Adw.TabView.new()
         
@@ -137,7 +146,7 @@ class AppWindow(Gtk.ApplicationWindow):
         self.set_titlebar(titlebar=header_bar)
 
         # Add toggle button to header
-        toggle_button = Gtk.Button.new_with_label("Toggle Overview")
+        toggle_button = Gtk.Button.new_with_label("Maps")
         toggle_button.connect("clicked", self.on_toggle_tab_overview)
         header_bar.pack_start(toggle_button)
 
@@ -213,12 +222,27 @@ class App(Adw.Application):
         dialog.set_application_icon('help-about-symbolic')
         dialog.present()
 
+
     
     def do_activate(self):
         win = self.props.active_window
         if not win:
             win = AppWindow(application=self)
         win.present()
+
+        # Start download in a thread so UI stays responsive
+        threading.Thread(target=self.download_maps_and_continue, args=(win,), daemon=True).start()
+
+    def download_maps_and_continue(self, win):
+        cache_dir = GLib.get_user_cache_dir()
+        app_cache_dir = os.path.join(cache_dir, 'cloud.pulfer.EveInfluenceMap')
+        os.makedirs(app_cache_dir, exist_ok=True)
+        influence_map = os.path.join(app_cache_dir, 'influence.png')
+        coalition_map = os.path.join(app_cache_dir, 'coalitioninfluence.png')
+        download_image('https://www.verite.space/maps/influence/influence.png', influence_map)
+        download_image('https://www.verite.space/maps/coalition/coalitioninfluence.png', coalition_map)
+        # After download, switch to main UI in GTK main thread
+        GLib.idle_add(win.show_main_ui)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -238,15 +262,6 @@ class App(Adw.Application):
 
 
 def main(version):
-    cache_dir = GLib.get_user_cache_dir()
-    app_cache_dir = os.path.join(cache_dir, 'cloud.pulfer.EveInfluenceMap')
-    os.makedirs(app_cache_dir, exist_ok=True)
-
-    influence_map = os.path.join(app_cache_dir, 'influence.png')
-    coalition_map = os.path.join(app_cache_dir, 'coalitioninfluence.png')
-
-    download_image('https://www.verite.space/maps/influence/influence.png', influence_map)
-    download_image('https://www.verite.space/maps/coalition/coalitioninfluence.png', coalition_map)
     app = App()
     return app.run(sys.argv)
 
