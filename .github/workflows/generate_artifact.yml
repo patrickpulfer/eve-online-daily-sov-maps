@@ -2,28 +2,20 @@ name: Build Flatpak
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-
+name: CI
 jobs:
-  build:
+  flatpak:
+    name: "Flatpak"
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-48
+      options: --privileged
     steps:
-      - name: Set Gnome 48 environment
-        uses: actions/checkout@v3
-      - uses: ghcr.io/flathub-infra/flatpak-github-actions:gnome-48
-
-      - name: Set up Flatpak
-        uses: flatpak/flatpak-github-actions/setup-flatpak@v6
-
-      - name: Build Flatpak
-        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
-        with:
-          manifest-path: cloud.pulfer.EveInfluenceMap.yml
-          bundle: eve-influence-map.flatpak
-
-      - name: Upload Flatpak artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: eve-influence-map.flatpak
-          path: eve-influence-map.flatpak
+    - uses: actions/checkout@v4
+    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+      with:
+        bundle: palette.flatpak
+        manifest-path: cloud.pulfer.EveInfluenceMap.yml
+        cache-key: flatpak-builder-${{ github.sha }}
