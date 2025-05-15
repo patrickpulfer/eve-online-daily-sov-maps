@@ -43,7 +43,7 @@ jobs:
           name: "Latest Flatpak Release"
           tag_name: latest
           prerelease: false
-          draft: false
           files: eve-influence-map.flatpak
+          draft: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
