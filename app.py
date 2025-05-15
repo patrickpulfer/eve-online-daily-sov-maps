@@ -216,7 +216,7 @@ class App(Adw.Application):
         dialog.set_developer_name('Patrick Pulfer')
         dialog.set_license_type(Gtk.License(Gtk.License.MIT_X11))
         dialog.set_comments('Eve Online daily sov map viewer.')
-        dialog.set_website('https://evewho.com/character/185294134')
+        dialog.set_website('https://patrick.pulfer.cloud/')
         dialog.set_copyright('© 2025 Patrick Pulfer')
         dialog.set_developers(['Patrick Pulfer https://evewho.com/character/185294134'])
         dialog.set_application_icon('help-about-symbolic')
