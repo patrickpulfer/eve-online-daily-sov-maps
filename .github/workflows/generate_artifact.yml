@@ -13,13 +13,39 @@ jobs:
       options: --privileged
     steps:
     - uses: actions/checkout@v4
+    
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: eve-influence-map.flatpak
         manifest-path: cloud.pulfer.EveInfluenceMap.yml
         cache-key: flatpak-builder-${{ github.sha }}
+        
     - name: Upload Flatpak artifact
       uses: actions/upload-artifact@v4
       with:
         name: eve-influence-map.flatpak
         path: eve-influence-map.flatpak
+
+
+    - name: Delete existing 'latest' tag (local and remote)
+      if: github.ref == 'refs/heads/main'
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git fetch --prune --unshallow
+        git tag -d latest || true
+        git push origin :refs/tags/latest || true
+
+    - name: Create GitHub Release
+      if: github.ref == 'refs/heads/main'
+      uses: softprops/action-gh-release@v2
+      with:
+        name: "Latest Flatpak Release"
+        tag_name: latest
+        files: eve-influence-map.flatpak
+        prerelease: false
+        draft: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
