@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>cloud.pulfer.EveInfluenceMap</id>
-  <metadata_license>CC0-1.0</metadata_license>
-  <project_license>MIT</project_license>
+  
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT-0</project_license>
+
   <name>Eve Daily Sov Maps</name>
   <summary>Eve Online sovereignty map viewer</summary>
   <description>
@@ -10,8 +12,16 @@
       Eve Online's daily sovereignty maps viewer, focusing on both the Alliance and Coalition influences.
     </p>
   </description>
+
   <launchable type="desktop-id">cloud.pulfer.EveInfluenceMap.desktop</launchable>
   <url type="homepage">https://patrick.pulfer.cloud/</url>
+
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+
   <releases>
     <release version="1.0.0" date="2025-05-12">
       <description>
@@ -19,8 +29,10 @@
       </description>
     </release>
   </releases>
+
   <content_rating type="oars-1.1" />
   <developer_name>Patrick Pulfer</developer_name>
+
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/patrickpulfer/eve-online-daily-sov-maps/refs/heads/main/screenshots/1.png</image>
@@ -31,4 +43,5 @@
       <caption>Map Selection view</caption>
     </screenshot>
   </screenshots>
+
 </component>
