@@ -45,8 +45,11 @@
     <category>Maps</category>
   </categories>
 
-  <content_rating type="oars-1.1" />
-  
+  <content_rating type="oars-1.1">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+  </content_rating>
+
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/patrickpulfer/eve-online-daily-sov-maps/refs/heads/main/screenshots/1.png</image>
@@ -58,7 +61,7 @@
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/patrickpulfer/eve-online-daily-sov-maps/refs/heads/main/screenshots/3.png</image>
-      <caption>Zoom & Scroll Support</caption>
+      <caption>Zoom and Scroll Support</caption>
     </screenshot>
   </screenshots>
 
