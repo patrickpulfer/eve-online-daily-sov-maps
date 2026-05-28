@@ -4,7 +4,7 @@ A Gnome Application to view the daily alliances sovereignty influence map of Eve
 <br>
 
 ## Download the Flatpak!
-- https://github.com/patrickpulfer/eve-online-daily-sov-maps/releases/tag/latest
+- https://github.com/patrickpulfer/eve-online-daily-sov-maps/releases/download/latest/eve-influence-map.flatpak
 
 ## Screenshots
 <img src="./screenshots/1.png" width="90%" />
