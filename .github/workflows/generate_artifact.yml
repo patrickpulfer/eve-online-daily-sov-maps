@@ -42,7 +42,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v3
         with:
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           name: "Latest Flatpak Release"
           tag_name: latest
           prerelease: false
