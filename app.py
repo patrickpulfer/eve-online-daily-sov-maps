@@ -4,6 +4,7 @@ import gi, sys
 import urllib.request
 import os
 import threading
+#import src.image_tab as ImageTab
 
 gi.require_version(namespace='Gtk', version='4.0')
 gi.require_version(namespace='Adw', version='1')
@@ -16,7 +17,6 @@ Adw.init()
 
 def download_image(url, save_as):
     urllib.request.urlretrieve(url, save_as)
-
 
 class ImageTab:
     """Class to handle image tabs with zoom functionality"""
@@ -115,7 +115,8 @@ class AppWindow(Gtk.ApplicationWindow):
         # Create status page for loading
         self.status_page = Adw.StatusPage.new()
         self.status_page.set_title('Loading...')
-        self.status_page.set_icon_name('mail-inbox-symbolic')
+        #self.status_page.set_icon_name('update-symbolic')
+        #self.status_page.set_icon_name('spinner-symbolic')
         self.status_page.set_description('Downloading latest maps...')
 
         self.set_child(self.status_page)
@@ -185,6 +186,7 @@ class AppWindow(Gtk.ApplicationWindow):
         coalition = ImageTab(os.path.join(cache_dir, "coalitioninfluence.png"))
         tab_page = self.tabView.append(coalition.scroll)
         tab_page.set_title("Coalition Influence")
+
         zoom_out_button.connect("clicked", coalition.zoom_out)
         zoom_in_button.connect("clicked", coalition.zoom_in)
         zoom_fit_button.connect("clicked", coalition.zoom_fit)
@@ -212,12 +214,12 @@ class App(Adw.Application):
     def on_about_action(self, action, param):
         dialog = Adw.AboutDialog.new()
         dialog.set_application_name('Eve Daily Sov Maps')
-        dialog.set_version('1.0.0')
+        dialog.set_version('1.0.2')
         dialog.set_developer_name('Patrick Pulfer')
         dialog.set_license_type(Gtk.License(Gtk.License.MIT_X11))
         dialog.set_comments('Eve Online daily sov map viewer.')
         dialog.set_website('https://patrick.pulfer.cloud/')
-        dialog.set_copyright('© 2025 Patrick Pulfer')
+        dialog.set_copyright('© 2026 Patrick Pulfer')
         dialog.set_developers(['Patrick Pulfer https://evewho.com/character/185294134'])
         dialog.set_application_icon('help-about-symbolic')
         dialog.present()

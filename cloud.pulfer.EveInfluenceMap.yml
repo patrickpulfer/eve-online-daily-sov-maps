@@ -1,6 +1,6 @@
 app-id: cloud.pulfer.EveInfluenceMap
 runtime: org.gnome.Platform
-runtime-version: '48'
+runtime-version: '50'
 sdk: org.gnome.Sdk
 command: eve-influence-map
 finish-args:
