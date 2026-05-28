@@ -8,6 +8,8 @@ on:
 jobs:
   flatpak:
     name: "Flatpak"
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-48
@@ -40,10 +42,9 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v3
         with:
+          token: ${{ secrets.GH_PAT }}
           name: "Latest Flatpak Release"
           tag_name: latest
           prerelease: false
           files: eve-influence-map.flatpak
           draft: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
